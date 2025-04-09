@@ -6,6 +6,15 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
+  /// Builds the top-level widget that contains the app's overall layout.
+  ///
+  /// The layout is a [MaterialApp] with a [Scaffold] body, which contains a
+  /// [Column] of children inside a [SingleChildScrollView]. The children are
+  /// a [ImageSection], a [TitleSection], a [ButtonSection], and a [TextSection].
+  ///
+  /// The [ImageSection] displays an image of a lake, and the [TitleSection]
+  /// displays a title and location. The [ButtonSection] displays a row of
+  /// buttons, and the [TextSection] displays a block of text.
   Widget build(BuildContext context) {
     const String appTitle = 'Flutter layout demo';
     return MaterialApp(
@@ -48,17 +57,23 @@ class TitleSection extends StatelessWidget {
   final String location;
 
   @override
+  /// Builds a row containing the name and location of the lake.
+  ///
+  /// The row has a bold title, a smaller location, and a star rating
+  /// at the right side.
+  ///
+  /// The widget is padded by 32 pixels on all sides. The title and
+  /// location are aligned to the left, and the star rating is aligned
+  /// to the right.
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(32),
       child: Row(
         children: [
           Expanded(
-            /*1*/
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                /*2*/
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
@@ -85,6 +100,15 @@ class ButtonSection extends StatelessWidget {
   const ButtonSection({super.key});
 
   @override
+  /// Builds a row of three buttons with the given color.
+  ///
+  /// The buttons are labeled [label] and have the given [icon].
+  ///
+  /// The row is sized to fit its children and is centered horizontally.
+  /// The buttons are distributed evenly horizontally.
+  ///
+  /// The [color] parameter is not optional and must be set.
+  ///
   Widget build(BuildContext context) {
     final Color color = Theme.of(context).primaryColor;
     return SizedBox(
@@ -113,6 +137,19 @@ class ButtonWithText extends StatelessWidget {
   final String label;
 
   @override
+  /// Builds a column with an [Icon] and a [Text] below it.
+  ///
+  /// The [Icon] is built with the given [icon] and [color].
+  ///
+  /// The [Text] is built with the given [label], and the following style:
+  ///
+  /// * The font size is 12.
+  /// * The font weight is [FontWeight.w400].
+  /// * The color is the given [color].
+  ///
+  /// The [Icon] and [Text] are both centered horizontally.
+  ///
+  /// The column is sized to fit its children and is centered horizontally.
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -141,6 +178,11 @@ class TextSection extends StatelessWidget {
   final String description;
 
   @override
+  /// Builds a padded [Text] with the given [description].
+  ///
+  /// The [Text] is padded by 32 pixels on all sides.
+  ///
+  /// The [Text] soft wraps its content.
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(32),
@@ -156,6 +198,12 @@ class ImageSection extends StatelessWidget {
   final String image;
 
   @override
+  /// Builds an [Image] widget with the provided [image] asset.
+  ///
+  /// The [Image] is displayed with a width of 600 pixels and a height of 240 pixels.
+  /// The image is fitted to cover the space using [BoxFit.cover].
+  ///
+  /// Returns a widget that displays the image asset.
   Widget build(BuildContext context) {
     // #docregion image-asset
     return Image.asset(image, width: 600, height: 240, fit: BoxFit.cover);
